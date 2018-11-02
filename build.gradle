@@ -1,0 +1,95 @@
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'eclipse'
+
+mainClassName = 'sium.app.PentoDemo'
+ext.projectName = 'sium'
+ext.projectDescription = 'Implementation of Simple Incremental Update Model'
+ext.projectUrl = 'bibucket.org/bakuzen/sium'
+ext.developerID = 'casey'
+ext.developerName = 'Casey Kennington'
+ext.developerEmail = 'bakuzen@gmail.com'
+version = '0.73'
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'sium.app.PentoDemo'
+    }
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs 'src'
+	    }
+	} 
+	test {
+	    java {
+			srcDirs 'test'
+			exclude 'domains/**'
+	    }
+	}
+}
+
+test {
+  	testLogging {
+		exceptionFormat = 'full'
+    }
+  	systemProperty 'file.encoding', 'UTF-8'
+}
+
+repositories {
+	
+    flatDir {
+    	dirs file("${projectDir}/lib")
+    }
+    
+    flatDir {
+    	dirs file("${System.getProperty('java.home')}/lib/")
+    }
+
+     // for Mary TTS
+    maven {
+        url 'https://oss.jfrog.org/artifactory/repo'
+    }
+    
+    // for Sphinx ASR
+    maven {
+    	url 'https://oss.sonatype.org/content/repositories/repositories/snapshots' 
+    }
+    
+    maven {
+    	url 'http://maven.springframework.org/milestone'
+    }
+    
+    maven {
+    	url 'https://repository.apache.org/content/repositories/releases/'
+    }
+}
+
+dependencies {
+
+   compile name: 'sqlite'
+   compile name: 'nbayes'
+   compile name: 'rt'
+
+   compile 'javax.xml:jaxb-impl:2.+'
+   compile 'log4j:log4j:1.2.+'
+   compile 'org.apache.opennlp:opennlp-tools:1.5.3'
+   compile 'org.apache.opennlp:opennlp-maxent:3.0.3'
+   
+   testCompile group: 'org.hamcrest', name: 'hamcrest-core', version: '1.3'
+   testCompile group: 'junit', name: 'junit-dep', version: '4.10'
+   testCompile group: 'org.hamcrest', name: 'hamcrest-library', version: '1.3'
+   testCompile group: 'org.mockito', name: 'mockito-core', version: '1.9.+'
+} 
+
+
+//--------------------------------
+// added to the end for deploying
+//--------------------------------
+//buildscript{
+//	apply from: "https://bitbucket.org/dsgbielefeld/dsg-repo/raw/master/buildscript.gradle", to: buildscript
+//}
+//apply from: "https://bitbucket.org/dsgbielefeld/dsg-repo/raw/master/dsg.gradle"
