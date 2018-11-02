@@ -11,7 +11,7 @@ on Pento data (as in Kennington et al., 2013) for the "object" slot only.
 In PentoDemo, you can change the NaiveBayesMapping to either MaxEntMapping or LanguageModelMapping and note the different
 accuracies. You can also run test.sium.AllUnitTests as a junit test, and if all tests pass, then it is working properly. 
 
-# How it works
+### How it works
 
 The two main data structures are Context and LingEvidence. The context represents the "world" as a set of entities 
 and properties belonging to those entities. See test.sium.context.ContextTest for an example where two entities with
@@ -34,6 +34,7 @@ then passed to a Grounder which is what functions incrementally to produce an on
 	
 ### References
 
+```
 @article{KENNINGTON201743,
 title = "A simple generative model of incremental reference resolution for situated dialogue",
 journal = "Computer Speech & Language",
@@ -46,13 +47,16 @@ url = "http://www.sciencedirect.com/science/article/pii/S0885230815300127",
 author = "Casey Kennington and David Schlangen",
 keywords = "Dialogue, Situated, Incremental, Stochastic, Reference resolution"
 }
+```
 
+```
 @inproceedings{Kennington2013a,
 author = {Kennington, Casey and Kousidis, Spyros and Schlangen, David},
 booktitle = {SIGdial 2013},
 title = {{Interpreting Situated Dialogue Utterances: an Update Model that Uses Speech, Gaze, and Gesture Information}},
 year = {2013}
 }
+```
 
 
 Mapping Classifiers:
